@@ -18,3 +18,28 @@ if menu == "Cátalogo":
         st.write(f"Preço: R$ {produto['preco']}")
         st.write(f"Quantidade em estoque: {produto['quantidade']}")
         st.markdown("---")
+
+    else:
+            st.info("Nenhum produto encontrado.")
+else:
+    st.error("Erro ao conectar a API")
+
+
+if menu == "Adicionar produto":
+        st.subheader("Adicionar produto")
+        nome = st.text_input("Nome do produto:")
+        categoria = st.text_input("Categoria do produto:")
+        preco = st.number_input("Preço do produto")
+        quantidade = st.number_input("Quantidade em estoque",step=1)
+        if st.button("Adicionar produto"):
+            params = {
+                "nome": nome,
+                "categoria": categoria,
+                "preco": preco,
+                "quantidade": quantidade
+            }
+            response = requests.post(f"{API_URL}/produtos", params=params)
+            if response.status_code == 200:
+                st.success("Produto adicionado com sucesso!")
+            else:
+                st.error("Erro ao adicionar produto.")
