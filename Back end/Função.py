@@ -64,3 +64,13 @@ def deletar_produto(id_produto):
         finally:
             cursor.close()
             conexao.close()
+
+def buscar_produto(id_produto):
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute("SELECT * FROM produtos WHERE id = %s", (id_produto,))
+            return cursor.fetchone()
+        finally:
+            cursor.close()
+            conexao.close()
