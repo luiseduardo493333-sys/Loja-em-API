@@ -69,3 +69,12 @@ if menu == "Deletar produto":
                 st.success("Produto deletado com sucesso!")
             else:
                 st.error("Erro ao deletar produto")
+
+if menu == "Valor total em estoque":
+        st.subheader("Valor total em estoque")
+        response = requests.get(f"{API_URL}/estoque/valor_total")
+        if response.status_code == 200:
+            total = response.json().get("Valor_total_estoque", 0.0)
+            st.write(f"O valor total em estoque é: R$ {total:.2f}")
+        else:
+            st.error("Erro ao obter o valor total em estoque")
