@@ -74,6 +74,3 @@ def buscar_produto(id_produto):
         finally:
             cursor.close()
             conexao.close()
-
-if __name__ == '__main__':
-    criar_tabela()
