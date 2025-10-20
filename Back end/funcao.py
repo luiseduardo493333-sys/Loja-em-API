@@ -1,4 +1,5 @@
 from conexao import conectar
+
 def criar_tabela():
     conexao, cursor = conectar()
     if conexao:
@@ -13,6 +14,7 @@ def criar_tabela():
                 )
             """)
             conexao.commit()
+            print("Tabela criada com sucesso")
         finally:
             cursor.close()
             conexao.close()
@@ -29,8 +31,6 @@ def adicionar_produto(nome, categoria, preco, quantidade):
         finally:
             cursor.close()
             conexao.close()
-
-adicionar_produto("Teclado Gamer", "Periféricos", 250.00, 15)
 
 def listar_produtos():
     conexao, cursor = conectar()
@@ -74,3 +74,6 @@ def buscar_produto(id_produto):
         finally:
             cursor.close()
             conexao.close()
+
+if __name__ == '__main__':
+    criar_tabela()
