@@ -21,9 +21,6 @@ if menu == "Cátalogo":
 
     else:
             st.info("Nenhum produto encontrado.")
-else:
-    st.error("Erro ao conectar a API")
-
 
 if menu == "Adicionar produto":
         st.subheader("Adicionar produto")
