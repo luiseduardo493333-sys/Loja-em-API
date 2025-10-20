@@ -54,3 +54,13 @@ def atualizar_produto(id_produto, preco=None, quantidade=None):
         finally:
             cursor.close()
             conexao.close()
+
+def deletar_produto(id_produto):
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute("DELETE FROM produtos WHERE id = %s", (id_produto,))
+            conexao.commit()
+        finally:
+            cursor.close()
+            conexao.close()
